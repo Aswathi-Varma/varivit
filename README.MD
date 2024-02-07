@@ -19,7 +19,7 @@ The code uses argparse to handle command line arguments. However, configurations
 To train the model, follow these steps:
 1. Run `K_fold_varivit_glioma_cbs.py` and `K_fold_varivit_brats_cbs.py` for ensuring consistent image sizes within the same batch.
 2. Alternatively, use `K_fold_varivit_glioma_ga.py` and `K_fold_varivit_brats_ga.py` for handling varying image sizes. Adjust gradient accumulation iterations accordingly.
-3. Baseline models, including 3D vanilla ViT and ResNet, adapted from [https://github.com/chinmay5/vit_ae_plus_plus], are also included for comparison purposes.
+3. Baseline models, including vanilla ViT and ResNets, are also included for comparison purposes.
 
 ### Base Code Adaptation
 
