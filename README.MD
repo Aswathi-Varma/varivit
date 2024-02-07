@@ -8,7 +8,7 @@ This repository contains code for the paper "VariViT: A Vision Transformer for V
 
 Before running the code, please follow these setup instructions:
 1. Place the 3D extracted bounding boxes with three sizes in the `BASE_PATH` folder.
-2. Update the `BASE_PATH` variable in the `brats_dataset/brats.py` and `egd_dataset/glioma.py` files accordingly.
+2. Update the `BASE_PATH` variable in the `brats_dataset/brats.py` and `glioma_dataset/glioma.py` files accordingly.
 
 ### Configurations
 
