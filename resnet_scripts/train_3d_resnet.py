@@ -1,6 +1,4 @@
 import sys
-sys.path.append('/u/home/asw/vit')
-print("sys path" ,sys.path)
 import argparse
 import math
 import os
