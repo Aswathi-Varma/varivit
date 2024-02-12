@@ -13,7 +13,7 @@ BASE_PATH = '/root/data/brats/ViT_Multi'
 
 class BratsData(Dataset):
     def __init__(self, mode=None, local_seed = None, filename='x_train_ssl.npy', transform=None, label_name=None, use_z_score=False):
-        super(FlairData).__init__()
+        super(BratsData).__init__()
         file_path = os.path.join(BASE_PATH, filename)
         data_raw = np.load(file_path)
         print("data raw shape", data_raw.shape)
@@ -96,14 +96,12 @@ class BratsDataMulti(Dataset):
     def __str__(self):
         return f"Pre-train MRI data"
 
-def build_dataset(mode, local_seed=None, args=None, transforms = None, use_z_score=False):
-    assert mode in ['train', 'test', 'val', 'whole'], f"Invalid Mode selected, {mode}"
+def build_dataset(mode, args=None, transforms = None, use_z_score=False):
     filename = f'x_{mode}.npy'
     label_name = f'y_{mode}.npy'
-    return BratsData(mode=mode, local_seed= local_seed, filename=filename, transform=transforms, label_name=label_name, use_z_score=use_z_score)
+    return BratsData(mode=mode, filename=filename, transform=transforms, label_name=label_name, use_z_score=use_z_score)
 
 def build_multi_dataset(mode, sizes, args=None, transforms = None, use_z_score=False):
-    assert mode in ['train', 'test', 'val', 'whole'], f"Invalid Mode selected, {mode}"
     image_files = [f"{BASE_PATH}/x_{mode}_{size}.npy" for size in sizes]
     label_files = [f"{BASE_PATH}/y_{mode}_{size}.npy" for size in sizes]
 

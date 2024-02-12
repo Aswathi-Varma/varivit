@@ -6,7 +6,7 @@ import math
 import os
 import pickle
 from sklearn.model_selection import StratifiedKFold
-from training_scripts.resnet_3d import generate_model
+from resnet_scripts.resnet_3d import generate_model
 from dataset.dataset_factory import get_dataset
 from read_configs import bootstrap
 from utils.used_metrics import roc_auc

@@ -58,7 +58,5 @@ def bootstrap(args, key='SETUP'):
     args.use_imagenet = parser[key].getboolean('use_imagenet', fallback=False)
     args.use_edge_map = parser[key].getboolean('use_edge_map', fallback=True)
     args.volume_size = parser['DATASET'].getint('volume_size', fallback=96)
-    args.use_barlow = parser['SETUP'].getboolean('use_barlow', fallback=False)
-    args.fix_backbone = parser['FINE_TUNE_K_FOLD'].getboolean('fix_backbone', fallback=None)
 
     return args

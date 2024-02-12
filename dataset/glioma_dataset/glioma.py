@@ -8,13 +8,13 @@ import torchio as tio
 import matplotlib.pyplot
 from ctviewer import CTViewer
 import random
-BASE_PATH = '/root/data/glioma/ViT_96' 
-#BASE_PATH = '/root/data/glioma/ViT_Multi'
+#BASE_PATH = '/root/data/glioma/ViT_96' 
+BASE_PATH = '/root/data/glioma/ViT_Multi'
 
 
 class GliomaData(Dataset):
     def __init__(self, mode=None, filename='x_train_ssl.npy', transform=None, label_name=None, use_z_score=False):
-        super(FlairData).__init__()
+        super(GliomaData).__init__()
         file_path = os.path.join(BASE_PATH, filename)
         data_raw = np.load(file_path)
         print("data raw shape", data_raw.shape)
@@ -98,13 +98,11 @@ class GliomaDataMulti(Dataset):
         return f"Pre-train MRI data"
 
 def build_dataset(mode, args=None, transforms = None, use_z_score=False):
-    assert mode in ['train', 'test', 'val', 'whole'], f"Invalid Mode selected, {mode}"
-    filename = f'x_{mode}_ssl.npy'
-    label_name = f'y_{mode}_ssl.npy'
+    filename = f'x_{mode}.npy'
+    label_name = f'y_{mode}.npy'
     return GliomaData(mode=mode, filename=filename, transform=transforms, label_name=label_name, use_z_score=use_z_score)
 
 def build_multi_dataset(mode, sizes, args=None, transforms = None, use_z_score=False):
-    assert mode in ['train', 'test', 'val', 'whole'], f"Invalid Mode selected, {mode}"
     image_files = [f"{BASE_PATH}/x_{mode}_{size}.npy" for size in sizes]
     label_files = [f"{BASE_PATH}/y_{mode}_{size}.npy" for size in sizes]
 

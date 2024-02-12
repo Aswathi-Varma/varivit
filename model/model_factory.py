@@ -1,7 +1,6 @@
 from functools import partial
 
 from torch import nn
-from model import vit_autoenc
 from model.varivit import VisionTransformer3D
 from model.vit import VisionTransformer3D_vit
 

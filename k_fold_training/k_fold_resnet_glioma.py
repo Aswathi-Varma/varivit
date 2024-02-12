@@ -6,6 +6,7 @@ import pickle
 import time
 import math
 import datetime
+import sys
 from resnet_scripts.train_3d_resnet import get_all_feat_and_labels
 import numpy as np
 import torch
@@ -13,7 +14,6 @@ from resnet_scripts.resnet_3d import generate_model
 from timm.optim import optim_factory
 import utils.lr_decay as lrd
 from utils.custom_loss import SoftCrossEntropyWithWeightsLoss
-import post_training_utils
 from utils.misc import NativeScalerWithGradNormCount as NativeScaler
 from torch.backends import cudnn
 from utils.used_metrics import roc_auc, get_scores_kfold
@@ -459,7 +459,7 @@ def main(args):
 
         # Evaluate the best model on the test set
         test_stats, probabilities, target  = evaluate(data_loader=dataloader_test, model=model, device=device, weight=None)
-        print(f"Accuracy of model on the {len(dataset_test)} test images: {test_stats['roc_auc_score']:.1f}%")   
+        print(f"Accuracy of model on the test images: {test_stats['roc_auc_score']:.1f}%")   
         global_probs.append(probabilities)
         global_target.append(target)
         global_roc_auc.append(test_stats['roc_auc_score'])
